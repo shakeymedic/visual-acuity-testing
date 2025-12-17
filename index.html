@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Acuity Assessment Guide - UK EM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        nhs: {
+                            blue: '#005EB8',
+                            darkblue: '#003087',
+                            brightblue: '#0072CE',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen p-2 md:p-8 flex justify-center items-start">
+
+    <!-- Main Container -->
+    <div class="max-w-4xl w-full bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-200">
+
+        <!-- Compact Header -->
+        <div class="bg-slate-900 text-white p-4 flex items-center justify-between gap-3 border-b-4 border-nhs-blue">
+            <div class="flex items-center gap-3">
+                <img src="https://iili.io/KGQOvkl.md.png" alt="WMEBEM Logo" class="h-12 w-auto bg-white rounded p-0.5">
+                <div>
+                    <h1 class="text-lg md:text-2xl font-extrabold tracking-tight uppercase leading-none">Visual Acuity</h1>
+                    <p class="text-blue-300 font-medium text-xs md:text-sm">ED Assessment Guide</p>
+                </div>
+            </div>
+            <div class="hidden sm:block text-right">
+                <div class="inline-block bg-nhs-blue px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-0.5">UK Standards</div>
+            </div>
+        </div>
+
+        <!-- The 3 Golden Rules - Mobile Optimized as Horizontal Strips -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-b border-gray-200 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            <!-- Rule 1 -->
+            <div class="p-3 md:p-6 flex md:flex-col items-center gap-3 md:gap-0 md:text-center bg-blue-50/50">
+                <div class="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center shrink-0">
+                    <i class="fas fa-ruler-horizontal text-2xl md:text-4xl text-nhs-blue md:mb-3"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base">6 Metres</h3>
+                    <p class="text-xs text-slate-600 leading-tight">Standard Snellen distance. (Or 3m with mirror)</p>
+                </div>
+            </div>
+            <!-- Rule 2 -->
+            <div class="p-3 md:p-6 flex md:flex-col items-center gap-3 md:gap-0 md:text-center bg-blue-50/50">
+                <div class="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center shrink-0">
+                    <i class="fas fa-glasses text-2xl md:text-4xl text-nhs-blue md:mb-3"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base">Glasses ON</h3>
+                    <p class="text-xs text-slate-600 leading-tight">Wear distance correction. Remove reading glasses.</p>
+                </div>
+            </div>
+            <!-- Rule 3 -->
+            <div class="p-3 md:p-6 flex md:flex-col items-center gap-3 md:gap-0 md:text-center bg-blue-50/50">
+                <div class="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center shrink-0">
+                    <i class="fas fa-eye-slash text-2xl md:text-4xl text-nhs-blue md:mb-3"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base">One Eye</h3>
+                    <p class="text-xs text-slate-600 leading-tight">Test separately. Occlude fully (no peeking).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- LEFT COLUMN: Procedure & Pinhole -->
+            <div class="lg:col-span-7 flex flex-col gap-6">
+                
+                <!-- The Procedure -->
+                <section>
+                    <h2 class="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2 mb-3">
+                        <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                        The Procedure
+                    </h2>
+                    <div class="space-y-2">
+                        <div class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                            <div class="text-nhs-blue font-bold text-base shrink-0 w-4">R</div>
+                            <p class="text-xs md:text-sm text-gray-700"><strong>Right Eye first.</strong> Occlude left. Read from top down.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                            <div class="text-nhs-blue font-bold text-base shrink-0 w-4"><i class="fas fa-arrow-down"></i></div>
+                            <p class="text-xs md:text-sm text-gray-700">Push limits. Record smallest line with < 2 errors.</p>
+                        </div>
+                        <div class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                            <div class="text-nhs-blue font-bold text-base shrink-0 w-4">L</div>
+                            <p class="text-xs md:text-sm text-gray-700"><strong>Repeat for Left Eye.</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pinhole Test -->
+                <section>
+                    <h2 class="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2 mb-3">
+                        <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                        The Pinhole Test
+                    </h2>
+                    <div class="bg-nhs-darkblue text-white p-3 rounded-t-lg text-center">
+                        <p class="font-bold text-xs uppercase tracking-wide">WHEN TO USE</p>
+                        <p class="text-sm">If Visual Acuity is <span class="font-bold underline text-yellow-300">6/12 or worse</span></p>
+                    </div>
+                    <div class="border-x border-b border-gray-200 p-3 rounded-b-lg grid grid-cols-2 gap-3">
+                        <div class="text-center p-2 bg-green-50 rounded border border-green-100">
+                            <p class="text-green-800 font-bold text-xs mb-1">IMPROVES</p>
+                            <i class="fas fa-check-circle text-green-600 text-xl mb-1"></i>
+                            <p class="text-[10px] text-gray-500 font-medium uppercase">Refractive Error</p>
+                            <p class="text-[10px] text-gray-500 leading-tight mt-1 hidden sm:block">Likely needs new glasses. Usually not an emergency.</p>
+                        </div>
+                        <div class="text-center p-2 bg-red-50 rounded border border-red-100">
+                            <p class="text-red-800 font-bold text-xs mb-1">NO CHANGE</p>
+                            <i class="fas fa-exclamation-circle text-red-600 text-xl mb-1"></i>
+                            <p class="text-[10px] text-gray-500 font-medium uppercase">Pathology</p>
+                            <p class="text-[10px] text-gray-500 leading-tight mt-1 hidden sm:block">Cataract, retinal issue, or macula. Needs exam.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Documentation Box -->
+                 <section class="bg-slate-100 p-3 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-slate-700 text-xs mb-2 uppercase tracking-wide flex items-center gap-2">
+                        <i class="fas fa-pen"></i> Documentation Examples
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <div class="bg-white px-2 py-1.5 rounded border border-gray-200 shadow-sm flex justify-between">
+                            <span class="font-mono font-bold text-nhs-blue">6/6</span> <span class="text-gray-500">Normal</span>
+                        </div>
+                        <div class="bg-white px-2 py-1.5 rounded border border-gray-200 shadow-sm flex justify-between">
+                            <span class="font-mono font-bold text-nhs-blue">6/9 -2</span> <span class="text-gray-500">2 errors</span>
+                        </div>
+                        <div class="bg-white px-2 py-1.5 rounded border border-gray-200 shadow-sm flex justify-between">
+                            <span class="font-mono font-bold text-nhs-blue">6/60 PH 6/9</span> <span class="text-gray-500">Improved</span>
+                        </div>
+                         <div class="bg-white px-2 py-1.5 rounded border border-gray-200 shadow-sm flex justify-between">
+                            <span class="font-mono font-bold text-nhs-blue">L: CF @ 1m</span> <span class="text-gray-500">Count Fingers</span>
+                        </div>
+                    </div>
+                 </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Low Vision Ladder -->
+            <div class="lg:col-span-5 mt-4 lg:mt-0">
+                <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
+                    <div class="bg-slate-900 p-3 border-b border-slate-700 text-center">
+                        <h2 class="text-white font-bold uppercase tracking-wider text-xs"><i class="fas fa-sort-amount-down mr-2"></i>Low Vision Ladder</h2>
+                        <p class="text-slate-400 text-[10px] mt-0.5">Use if patient cannot read top line (6/60)</p>
+                    </div>
+                    
+                    <div class="p-3 flex-grow space-y-2">
+                        <!-- Step 1 -->
+                        <div class="flex items-center gap-2 relative">
+                            <div class="z-10 bg-white text-slate-900 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-nhs-blue">1</div>
+                            <div class="bg-slate-700/80 p-2 rounded w-full flex justify-between items-center">
+                                <div>
+                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Move Closer</p>
+                                    <p class="text-white text-xs">Test at 3m or 1m</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-slate-400 text-[10px] font-mono">3/60</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                         <div class="flex items-center gap-2 relative">
+                            <div class="z-10 bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">2</div>
+                            <div class="bg-slate-700/60 p-2 rounded w-full flex justify-between items-center">
+                                <div>
+                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Count Fingers</p>
+                                    <p class="text-white text-xs">Hold fingers at 1m</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-slate-400 text-[10px] font-mono">CF</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-center gap-2 relative">
+                            <div class="z-10 bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">3</div>
+                            <div class="bg-slate-700/40 p-2 rounded w-full flex justify-between items-center">
+                                <div>
+                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Hand Move.</p>
+                                    <p class="text-white text-xs">Wave hand in front</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-slate-400 text-[10px] font-mono">HM</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex items-center gap-2 relative">
+                            <div class="z-10 bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">4</div>
+                            <div class="bg-slate-700/20 p-2 rounded w-full flex justify-between items-center">
+                                <div>
+                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Light Perc.</p>
+                                    <p class="text-white text-xs">Pen torch into eye</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-slate-400 text-[10px] font-mono">PL</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="flex items-center gap-2 relative">
+                            <div class="z-10 bg-red-900 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-red-700">5</div>
+                            <div class="bg-red-900/40 p-2 rounded w-full border border-red-900/50 flex justify-between items-center">
+                                <div>
+                                    <p class="text-red-300 font-bold text-[10px] uppercase">No Light</p>
+                                    <p class="text-white text-xs">Total blindness</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-red-200 text-[10px] font-mono">NPL</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 p-2 text-center border-t border-gray-200">
+            <p class="text-[10px] text-gray-400">Not for clinical record. Guide purpose only. | WMEBEM</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
