@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Eye Assessment & Visual Acuity Guide - UK EM</title>
+    <title>Visual Acuity Guide – WMEBEM</title>
+    <meta name="description" content="Teaching guide for Emergency Department clinicians: how to test, interpret and document visual acuity.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -11,303 +12,746 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        nhs: {
-                            blue: '#005EB8',
-                            darkblue: '#003087',
-                            brightblue: '#0072CE',
-                        }
+                        nhs: { blue: '#005EB8', darkblue: '#003087', brightblue: '#0072CE' }
                     }
                 }
             }
         }
     </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 4.5rem; }
+        .chip { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chev { transform: rotate(90deg); }
+        @media print {
+            nav, .no-print { display: none !important; }
+            body { background: #fff !important; padding: 0 !important; }
+            .shadow-2xl, .shadow-sm, .shadow-lg { box-shadow: none !important; }
+            details { display: block; }
+            details > *:not(summary) { display: block !important; }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen p-2 md:p-8 flex justify-center items-start">
+<body class="bg-gray-100 min-h-screen p-2 md:p-8 flex justify-center items-start text-slate-800">
 
-    <div class="max-w-6xl w-full bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-200">
+<div class="max-w-6xl w-full bg-white shadow-2xl rounded-xl overflow-hidden border border-gray-200">
 
-        <div class="bg-slate-900 text-white p-4 flex items-center justify-between gap-3 border-b-4 border-nhs-blue">
-            <div class="flex items-center gap-3">
-                <img src="https://iili.io/KGQOvkl.md.png" alt="WMEBEM Logo" class="h-12 w-auto bg-white rounded p-0.5">
-                <div>
-                    <h1 class="text-lg md:text-2xl font-extrabold tracking-tight uppercase leading-none">Comprehensive Eye Assessment</h1>
-                    <p class="text-blue-300 font-medium text-xs md:text-sm">ED Visual Acuity & Examination Guide</p>
-                </div>
-            </div>
-            <div class="hidden sm:block text-right">
-                <div class="inline-block bg-nhs-blue px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-0.5">UK Standards</div>
+    <!-- Header -->
+    <header class="bg-slate-900 text-white p-4 flex items-center justify-between gap-3 border-b-4 border-nhs-blue">
+        <div class="flex items-center gap-3">
+            <img src="https://iili.io/KGQOvkl.md.png" alt="WMEBEM logo" class="h-12 w-auto bg-white rounded p-0.5">
+            <div>
+                <h1 class="text-lg md:text-2xl font-extrabold tracking-tight uppercase leading-none">Visual Acuity</h1>
+                <p class="text-blue-300 font-medium text-xs md:text-sm">Test it · Interpret it · Document it — an ED teaching guide</p>
             </div>
         </div>
+        <div class="hidden sm:block text-right">
+            <div class="inline-block bg-nhs-blue px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">UK practice</div>
+        </div>
+    </header>
 
+    <!-- Section nav -->
+    <nav class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
+        <ul class="flex gap-1 overflow-x-auto px-2 py-2 text-xs font-semibold whitespace-nowrap">
+            <li><a href="#why" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Why</a></li>
+            <li><a href="#setup" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Set-up</a></li>
+            <li><a href="#procedure" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Procedure</a></li>
+            <li><a href="#interpret" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Interpret</a></li>
+            <li><a href="#document" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Document</a></li>
+            <li><a href="#builder" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Record builder</a></li>
+            <li><a href="#special" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Special situations</a></li>
+            <li><a href="#quiz" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Test yourself</a></li>
+            <li><a href="#exam" class="block px-3 py-1.5 rounded-full hover:bg-blue-50 text-slate-700">Eye exam &amp; red flags</a></li>
+        </ul>
+    </nav>
+
+    <!-- WHY -->
+    <section id="why" class="p-4 md:p-8 border-b border-gray-200">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-3">
+            <i class="fas fa-heart-pulse text-nhs-blue"></i> Why it matters: acuity is the "vital sign" of the eye
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+            <div class="p-3 bg-blue-50/60 rounded border border-blue-100">
+                <p class="font-bold text-nhs-darkblue mb-1">Every eye presentation</p>
+                <p class="text-gray-700 text-xs leading-relaxed">Record visual acuity in every patient with an eye complaint or facial or orbital trauma, including when the complaint seems minor.</p>
+            </div>
+            <div class="p-3 bg-blue-50/60 rounded border border-blue-100">
+                <p class="font-bold text-nhs-darkblue mb-1">A baseline for later comparison</p>
+                <p class="text-gray-700 text-xs leading-relaxed">Later clinicians compare against your number. A deterioration can only be detected if an accurate starting value exists.</p>
+            </div>
+            <div class="p-3 bg-blue-50/60 rounded border border-blue-100">
+                <p class="font-bold text-nhs-darkblue mb-1">Referral and medico-legal record</p>
+                <p class="text-gray-700 text-xs leading-relaxed">Ophthalmology will ask for it when you refer. A missing acuity is a common gap in eye-related complaints and claims.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SET-UP -->
+    <section id="setup">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-b border-gray-200 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             <div class="p-3 md:p-6 flex md:flex-col items-center gap-3 md:gap-0 md:text-center bg-blue-50/50">
-                <div class="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center shrink-0">
-                    <i class="fas fa-ruler-horizontal text-2xl md:text-4xl text-nhs-blue md:mb-3"></i>
-                </div>
+                <i class="fas fa-ruler-horizontal text-2xl md:text-4xl text-nhs-blue md:mb-3 w-10 md:w-auto text-center"></i>
                 <div>
-                    <h3 class="font-bold text-slate-800 text-sm md:text-base">6 Metres</h3>
-                    <p class="text-xs text-slate-600 leading-tight">Standard Snellen distance. (Or 3m with mirror)</p>
+                    <h3 class="font-bold text-sm md:text-base">Correct distance</h3>
+                    <p class="text-xs text-slate-600 leading-tight">6 m for a standard Snellen chart, or 3 m to a mirror with a reversed chart (the light path is still 6 m). A chart made for 3 m is read at 3 m.</p>
                 </div>
             </div>
             <div class="p-3 md:p-6 flex md:flex-col items-center gap-3 md:gap-0 md:text-center bg-blue-50/50">
-                <div class="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center shrink-0">
-                    <i class="fas fa-glasses text-2xl md:text-4xl text-nhs-blue md:mb-3"></i>
-                </div>
+                <i class="fas fa-glasses text-2xl md:text-4xl text-nhs-blue md:mb-3 w-10 md:w-auto text-center"></i>
                 <div>
-                    <h3 class="font-bold text-slate-800 text-sm md:text-base">Glasses ON</h3>
-                    <p class="text-xs text-slate-600 leading-tight">Wear distance correction. Remove reading glasses.</p>
+                    <h3 class="font-bold text-sm md:text-base">Distance glasses ON</h3>
+                    <p class="text-xs text-slate-600 leading-tight">Test with the patient's usual distance glasses or contact lenses. Reading glasses blur distance vision, so take them off.</p>
                 </div>
             </div>
             <div class="p-3 md:p-6 flex md:flex-col items-center gap-3 md:gap-0 md:text-center bg-blue-50/50">
-                <div class="w-10 h-10 md:w-auto md:h-auto flex items-center justify-center shrink-0">
-                    <i class="fas fa-eye-slash text-2xl md:text-4xl text-nhs-blue md:mb-3"></i>
-                </div>
+                <i class="fas fa-eye-slash text-2xl md:text-4xl text-nhs-blue md:mb-3 w-10 md:w-auto text-center"></i>
                 <div>
-                    <h3 class="font-bold text-slate-800 text-sm md:text-base">One Eye</h3>
-                    <p class="text-xs text-slate-600 leading-tight">Test separately. Occlude fully (no peeking).</p>
+                    <h3 class="font-bold text-sm md:text-base">One eye at a time</h3>
+                    <p class="text-xs text-slate-600 leading-tight">Cover the other eye with an occluder, or with the palm of the hand. Do not use gaps between the fingers, and do not press on the eye.</p>
                 </div>
             </div>
         </div>
+        <div class="p-4 md:px-8 md:py-5 border-b border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="flex gap-3 p-3 rounded border border-amber-200 bg-amber-50">
+                <i class="fas fa-clock text-amber-600 mt-0.5"></i>
+                <p class="text-xs md:text-sm text-amber-900"><strong>Test acuity before</strong> instilling drops (anaesthetic, fluorescein, dilating), before examining with bright lights, and before any procedure. Drops and bright lights can temporarily reduce the reading.</p>
+            </div>
+            <div class="flex gap-3 p-3 rounded border border-red-200 bg-red-50">
+                <i class="fas fa-flask text-red-600 mt-0.5"></i>
+                <p class="text-xs md:text-sm text-red-900"><strong>Exception: chemical injury.</strong> Start irrigation immediately. Do not delay it to measure acuity. Check acuity once irrigation is under way or completed, and record when it was measured.</p>
+            </div>
+            <div class="flex gap-3 p-3 rounded border border-gray-200 bg-gray-50">
+                <i class="fas fa-lightbulb text-nhs-blue mt-0.5"></i>
+                <p class="text-xs md:text-sm text-gray-700">Make sure the chart is <strong>evenly lit</strong> and free of glare, and that the patient sits or stands at the marked position.</p>
+            </div>
+            <div class="flex gap-3 p-3 rounded border border-gray-200 bg-gray-50">
+                <i class="fas fa-comment-medical text-nhs-blue mt-0.5"></i>
+                <p class="text-xs md:text-sm text-gray-700"><strong>Ask about baseline vision:</strong> a known "lazy eye" (amblyopia), previous eye disease or surgery, and when their glasses were last updated. A reduced reading may be longstanding.</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 border-b border-gray-200">
+    <!-- PROCEDURE -->
+    <section id="procedure" class="p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 border-b border-gray-200">
+        <div class="lg:col-span-7 flex flex-col gap-6">
+            <div>
+                <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-3">
+                    <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                    The procedure (distance acuity)
+                </h2>
+                <ol class="space-y-2 text-xs md:text-sm text-gray-700">
+                    <li class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                        <span class="text-nhs-blue font-bold w-5 shrink-0">R</span>
+                        <span><strong>Right eye first</strong> (a fixed routine avoids R/L mix-ups). Cover the left eye. Ask the patient to read from the top line down.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                        <span class="text-nhs-blue font-bold w-5 shrink-0"><i class="fas fa-arrow-down"></i></span>
+                        <span><strong>Push to the limit.</strong> Encourage them to guess until they get most of a line wrong. Squinting or leaning forward gives a falsely good result, so ask them not to.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                        <span class="text-nhs-blue font-bold w-5 shrink-0"><i class="fas fa-pen"></i></span>
+                        <span><strong>Record the smallest line on which more than half the letters were read correctly.</strong> Add letters missed on that line ("−") or letters read on the next line down ("+"). See the worked example.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                        <span class="text-nhs-blue font-bold w-5 shrink-0">L</span>
+                        <span><strong>Repeat for the left eye.</strong> Patients can memorise letters, so ask them to read the lines in reverse or use a different chart or line if you can.</span>
+                    </li>
+                    <li class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
+                        <span class="text-nhs-blue font-bold w-5 shrink-0"><i class="fas fa-circle-dot"></i></span>
+                        <span><strong>Pinhole</strong> any eye that reads worse than 6/6 (see below).</span>
+                    </li>
+                </ol>
+            </div>
 
-            <div class="lg:col-span-7 flex flex-col gap-6">
-                <section>
-                    <h2 class="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2 mb-3">
-                        <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
-                        The Procedure
-                    </h2>
-                    <div class="space-y-2">
-                        <div class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
-                            <div class="text-nhs-blue font-bold text-base shrink-0 w-4">R</div>
-                            <p class="text-xs md:text-sm text-gray-700"><strong>Right Eye first.</strong> Occlude left. Read from top down.</p>
-                        </div>
-                        <div class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
-                            <div class="text-nhs-blue font-bold text-base shrink-0 w-4"><i class="fas fa-arrow-down"></i></div>
-                            <p class="text-xs md:text-sm text-gray-700">Push limits. Record smallest line with < 2 errors.</p>
-                        </div>
-                        <div class="flex items-start gap-3 p-2.5 bg-gray-50 rounded border border-gray-100">
-                            <div class="text-nhs-blue font-bold text-base shrink-0 w-4">L</div>
-                            <p class="text-xs md:text-sm text-gray-700"><strong>Repeat for Left Eye.</strong></p>
-                        </div>
-                    </div>
-                </section>
+            <!-- Worked scoring example -->
+            <div class="rounded-lg border border-gray-200 p-4">
+                <h3 class="font-bold text-sm mb-2"><i class="fas fa-calculator text-nhs-blue mr-1"></i> Worked example: partial lines</h3>
+                <p class="text-xs text-gray-600 mb-3">This example assumes 5 letters per line. Snellen charts have different numbers of letters on each line, so count what is on your chart.</p>
+                <div class="space-y-1.5 font-mono text-sm">
+                    <div class="flex items-center gap-2"><span class="w-12 text-gray-500 text-xs">6/12</span>
+                        <span class="text-green-700">D ✓ &nbsp;F ✓ &nbsp;N ✓ &nbsp;P ✓ &nbsp;T ✓</span></div>
+                    <div class="flex items-center gap-2"><span class="w-12 text-gray-500 text-xs">6/9</span>
+                        <span><span class="text-green-700">H ✓ &nbsp;Z ✓ &nbsp;V ✓</span> &nbsp;<span class="text-red-600">C ✗ &nbsp;O ✗</span></span></div>
+                    <div class="flex items-center gap-2"><span class="w-12 text-gray-500 text-xs">6/6</span>
+                        <span class="text-red-600">all ✗</span></div>
+                </div>
+                <div class="mt-3 text-xs md:text-sm bg-blue-50 p-2 rounded">
+                    3 of 5 letters on the 6/9 line (more than half) → record <span class="chip font-bold text-nhs-blue">6/9 -2</span>.
+                    <br>If only 2 of 5 had been read on the 6/9 line → record <span class="chip font-bold text-nhs-blue">6/12 +2</span>.
+                </div>
+                <p class="text-[11px] text-gray-500 mt-2">Departments differ slightly in how they record partial lines. What matters most is that the notation is clear and used consistently.</p>
+            </div>
 
-                <section>
-                    <h2 class="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2 mb-3">
-                        <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
-                        The Pinhole Test
-                    </h2>
-                    <div class="bg-nhs-darkblue text-white p-3 rounded-t-lg text-center">
-                        <p class="font-bold text-xs uppercase tracking-wide">WHEN TO USE</p>
-                        <p class="text-sm">If Visual Acuity is <span class="font-bold underline text-yellow-300">6/12 or worse</span></p>
-                    </div>
-                    <div class="border-x border-b border-gray-200 p-3 rounded-b-lg grid grid-cols-2 gap-3">
+            <!-- Pinhole -->
+            <div>
+                <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-3">
+                    <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                    The pinhole test
+                </h2>
+                <div class="bg-nhs-darkblue text-white p-3 rounded-t-lg text-center">
+                    <p class="font-bold text-xs uppercase tracking-wide">When to use</p>
+                    <p class="text-sm">Any eye reading <span class="font-bold underline text-yellow-300">worse than 6/6</span></p>
+                    <p class="text-[11px] text-blue-200 mt-0.5">Some departments use 6/9 or 6/12 as the cut-off, so follow local policy.</p>
+                </div>
+                <div class="border-x border-b border-gray-200 p-3 rounded-b-lg">
+                    <p class="text-xs text-gray-600 mb-3">The patient keeps their glasses on, holds the pinhole occluder over the eye being tested and reads the chart again. The pinhole only lets through light that does not need focusing, so it largely bypasses refractive error.</p>
+                    <div class="grid grid-cols-2 gap-3">
                         <div class="text-center p-2 bg-green-50 rounded border border-green-100">
                             <p class="text-green-800 font-bold text-xs mb-1">IMPROVES</p>
                             <i class="fas fa-check-circle text-green-600 text-xl mb-1"></i>
-                            <p class="text-[10px] text-gray-500 font-medium uppercase">Refractive Error</p>
-                            <p class="text-[10px] text-gray-500 leading-tight mt-1 hidden sm:block">Likely needs new glasses. Usually not an emergency.</p>
+                            <p class="text-[10px] text-gray-600 font-semibold uppercase">Refractive element likely</p>
+                            <p class="text-[11px] text-gray-600 leading-tight mt-1">Often needs updated glasses. <strong>Improvement does not rule out other disease.</strong> A new refractive change can itself be a sign of cataract or high blood glucose, for example.</p>
                         </div>
                         <div class="text-center p-2 bg-red-50 rounded border border-red-100">
-                            <p class="text-red-800 font-bold text-xs mb-1">NO CHANGE</p>
+                            <p class="text-red-800 font-bold text-xs mb-1">NO IMPROVEMENT</p>
                             <i class="fas fa-exclamation-circle text-red-600 text-xl mb-1"></i>
-                            <p class="text-[10px] text-gray-500 font-medium uppercase">Pathology</p>
-                            <p class="text-[10px] text-gray-500 leading-tight mt-1 hidden sm:block">Cataract, retinal issue, or macula. Needs exam.</p>
+                            <p class="text-[10px] text-gray-600 font-semibold uppercase">Look for another cause</p>
+                            <p class="text-[11px] text-gray-600 leading-tight mt-1">Possible causes: cloudy media (cornea, lens or vitreous), retina or macula, optic nerve, amblyopia, or a problem in the brain's visual pathways. The eye needs examining.</p>
                         </div>
                     </div>
-                </section>
-            </div>
-
-            <div class="lg:col-span-5 mt-4 lg:mt-0">
-                <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg h-full flex flex-col">
-                    <div class="bg-slate-900 p-3 border-b border-slate-700 text-center">
-                        <h2 class="text-white font-bold uppercase tracking-wider text-xs"><i class="fas fa-sort-amount-down mr-2"></i>Low Vision Ladder</h2>
-                        <p class="text-slate-400 text-[10px] mt-0.5">Use if patient cannot read top line (6/60)</p>
-                    </div>
-                    
-                    <div class="p-3 flex-grow space-y-2">
-                        <div class="flex items-center gap-2 relative">
-                            <div class="z-10 bg-white text-slate-900 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-nhs-blue">1</div>
-                            <div class="bg-slate-700/80 p-2 rounded w-full flex justify-between items-center">
-                                <div>
-                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Move Closer</p>
-                                    <p class="text-white text-xs">Test at 3m or 1m</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-slate-400 text-[10px] font-mono">3/60</p>
-                                </div>
-                            </div>
-                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
-                        </div>
-
-                         <div class="flex items-center gap-2 relative">
-                            <div class="z-10 bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">2</div>
-                            <div class="bg-slate-700/60 p-2 rounded w-full flex justify-between items-center">
-                                <div>
-                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Count Fingers</p>
-                                    <p class="text-white text-xs">Hold fingers at 1m</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-slate-400 text-[10px] font-mono">CF</p>
-                                </div>
-                            </div>
-                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
-                        </div>
-
-                        <div class="flex items-center gap-2 relative">
-                            <div class="z-10 bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">3</div>
-                            <div class="bg-slate-700/40 p-2 rounded w-full flex justify-between items-center">
-                                <div>
-                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Hand Move.</p>
-                                    <p class="text-white text-xs">Wave hand in front</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-slate-400 text-[10px] font-mono">HM</p>
-                                </div>
-                            </div>
-                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
-                        </div>
-
-                        <div class="flex items-center gap-2 relative">
-                            <div class="z-10 bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">4</div>
-                            <div class="bg-slate-700/20 p-2 rounded w-full flex justify-between items-center">
-                                <div>
-                                    <p class="text-blue-300 font-bold text-[10px] uppercase">Light Perc.</p>
-                                    <p class="text-white text-xs">Pen torch into eye</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-slate-400 text-[10px] font-mono">PL</p>
-                                </div>
-                            </div>
-                            <div class="absolute left-4 top-8 bottom-[-10px] w-0.5 bg-slate-600 -z-0"></div>
-                        </div>
-
-                        <div class="flex items-center gap-2 relative">
-                            <div class="z-10 bg-red-900 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-red-700">5</div>
-                            <div class="bg-red-900/40 p-2 rounded w-full border border-red-900/50 flex justify-between items-center">
-                                <div>
-                                    <p class="text-red-300 font-bold text-[10px] uppercase">No Light</p>
-                                    <p class="text-white text-xs">Total blindness</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-red-200 text-[10px] font-mono">NPL</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <p class="text-[11px] text-gray-500 mt-2"><i class="fas fa-info-circle mr-1"></i>Some patients find the pinhole hard to use (for example children, or patients who cannot find the hole), which gives a false "no improvement". In macular disease or dense cataract, the pinhole can make vision worse.</p>
                 </div>
             </div>
 
+            <!-- Near vision -->
+            <div>
+                <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-3">
+                    <span class="bg-slate-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span>
+                    Near vision (when relevant)
+                </h2>
+                <p class="text-xs md:text-sm text-gray-700 bg-gray-50 border border-gray-100 rounded p-3">
+                    Use a reading test card with <strong>N-point</strong> print sizes (N5, N6, N8, N10 and so on; a smaller number means smaller print). Test each eye with the patient's reading glasses on, at their usual reading distance (often around 33–40 cm). Record the smallest print read and the distance used, e.g. <span class="chip font-bold text-nhs-blue">Near: R N6, L N8 at 35 cm c reading gl</span>. Near vision is useful when the patient cannot get to a distance chart, but it <strong>does not replace</strong> distance acuity.
+                </p>
+            </div>
         </div>
 
-        <div class="p-4 md:p-8 border-b border-gray-200 bg-slate-50">
-            <h2 class="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2 mb-4">
-                <i class="fas fa-file-medical text-nhs-blue"></i> Documenting Visual Acuity
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <div class="space-y-4">
-                    <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-sm text-slate-800 mb-2 border-b pb-1">The Snellen Fraction</h3>
-                        <div class="flex items-center gap-4">
-                            <div class="text-center font-mono font-bold text-lg text-nhs-blue">6<br><span class="border-t-2 border-nhs-blue block">12</span></div>
-                            <div class="text-sm text-gray-700">
-                                <p><strong>Numerator:</strong> Distance the patient is from the chart in metres.</p>
-                                <p><strong>Denominator:</strong> Distance a healthy eye can read that line in metres.</p>
+        <!-- Low vision ladder -->
+        <div class="lg:col-span-5">
+            <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg flex flex-col lg:sticky lg:top-20">
+                <div class="bg-slate-900 p-3 border-b border-slate-700 text-center">
+                    <h2 class="text-white font-bold uppercase tracking-wider text-xs"><i class="fas fa-sort-amount-down mr-2"></i>Low vision ladder</h2>
+                    <p class="text-slate-400 text-[11px] mt-0.5">Use when the top letter (6/60) cannot be read at 6 m. Go down one step at a time.</p>
+                </div>
+                <ol class="p-3 space-y-2">
+                    <li class="flex items-center gap-2">
+                        <span class="bg-white text-slate-900 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-nhs-blue">1</span>
+                        <div class="bg-slate-700/80 p-2 rounded w-full flex justify-between items-center gap-2">
+                            <div>
+                                <p class="text-blue-300 font-bold text-[10px] uppercase">Move closer</p>
+                                <p class="text-white text-xs">Walk the patient towards the chart (3 m, 2 m, 1 m). The top line read at 3 m = 3/60, at 1 m = 1/60.</p>
                             </div>
+                            <p class="text-slate-300 text-[11px] font-mono shrink-0">3/60 … 1/60</p>
                         </div>
-                    </div>
-                    <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-sm text-slate-800 mb-2 border-b pb-1">Standard Abbreviations</h3>
-                        <ul class="text-sm text-gray-700 grid grid-cols-2 gap-2">
-                            <li><strong>VA:</strong> Visual Acuity</li>
-                            <li><strong>R:</strong> Right Eye</li>
-                            <li><strong>L:</strong> Left Eye</li>
-                            <li><strong>c gl:</strong> With glasses</li>
-                            <li><strong>s gl:</strong> Without glasses</li>
-                            <li><strong>PH:</strong> Pinhole</li>
-                            <li><strong>NI:</strong> No Improvement</li>
-                        </ul>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">2</span>
+                        <div class="bg-slate-700/60 p-2 rounded w-full flex justify-between items-center gap-2">
+                            <div>
+                                <p class="text-blue-300 font-bold text-[10px] uppercase">Counting fingers</p>
+                                <p class="text-white text-xs">Hold up fingers against a plain background, starting at 1 m and moving closer. <strong>Record the distance.</strong></p>
+                            </div>
+                            <p class="text-slate-300 text-[11px] font-mono shrink-0">CF @ 1 m</p>
+                        </div>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">3</span>
+                        <div class="bg-slate-700/40 p-2 rounded w-full flex justify-between items-center gap-2">
+                            <div>
+                                <p class="text-blue-300 font-bold text-[10px] uppercase">Hand movements</p>
+                                <p class="text-white text-xs">Hold your hand still, or move it slowly, and ask "is it moving?". Record the distance.</p>
+                            </div>
+                            <p class="text-slate-300 text-[11px] font-mono shrink-0">HM</p>
+                        </div>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="bg-slate-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-slate-500">4</span>
+                        <div class="bg-slate-700/20 p-2 rounded w-full flex justify-between items-center gap-2">
+                            <div>
+                                <p class="text-blue-300 font-bold text-[10px] uppercase">Perception of light</p>
+                                <p class="text-white text-xs">Shine a bright pen torch into the eye, switching it on and off, with the other eye <strong>firmly</strong> covered. If light is seen, ask which direction it comes from (projection).</p>
+                            </div>
+                            <p class="text-slate-300 text-[11px] font-mono shrink-0">PL</p>
+                        </div>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="bg-red-900 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border-2 border-red-700">5</span>
+                        <div class="bg-red-900/40 p-2 rounded w-full border border-red-900/50 flex justify-between items-center gap-2">
+                            <div>
+                                <p class="text-red-300 font-bold text-[10px] uppercase">No perception of light</p>
+                                <p class="text-white text-xs">No light seen with a bright torch. Confirm this carefully: it is a very serious finding.</p>
+                            </div>
+                            <p class="text-red-200 text-[11px] font-mono shrink-0">NPL</p>
+                        </div>
+                    </li>
+                </ol>
+                <p class="text-slate-400 text-[11px] px-3 pb-3">You may also see "LP" and "NLP" in place of PL and NPL. Both are in use; follow your department's convention.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERPRET -->
+    <section id="interpret" class="p-4 md:p-8 border-b border-gray-200">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-4">
+            <i class="fas fa-magnifying-glass-chart text-nhs-blue"></i> Interpreting visual acuity
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-2 border-b pb-1">Reading the Snellen fraction</h3>
+                    <div class="flex items-center gap-4">
+                        <div class="text-center font-mono font-bold text-2xl text-nhs-blue leading-tight">6<br><span class="border-t-2 border-nhs-blue block">18</span></div>
+                        <div class="text-sm text-gray-700 space-y-1">
+                            <p><strong>Top number:</strong> the distance (metres) at which the patient read the chart.</p>
+                            <p><strong>Bottom number:</strong> the distance at which a person with standard vision could read that line.</p>
+                            <p class="text-xs text-gray-600">So 6/18 means that what this patient can just read at 6 m, a person with standard vision could read from 18 m away. <strong>A bigger bottom number means worse vision.</strong></p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
-                    <h3 class="font-bold text-sm text-slate-800 mb-3 border-b pb-1">Documentation Examples</h3>
+                    <h3 class="font-bold text-sm mb-2 border-b pb-1">What counts as "normal"?</h3>
+                    <ul class="text-sm text-gray-700 space-y-1.5 list-disc pl-5">
+                        <li><strong>6/6</strong> is the standard reference point. Many healthy young adults read 6/5 or better, so 6/6 is not the best possible result.</li>
+                        <li>Acuity tends to decline with age. In an older adult, a reduced reading may be longstanding. Ask about it and compare with previous records.</li>
+                        <li><strong>A difference between the two eyes</strong>, or a <strong>drop from the patient's known baseline</strong>, is often more informative than the absolute number.</li>
+                        <li>Snellen testing varies between tests. A difference of a single line may be noise. Take a difference of <strong>two or more lines</strong> (or new symptoms with any drop) seriously.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-2 border-b pb-1">logMAR in brief</h3>
+                    <ul class="text-sm text-gray-700 space-y-1.5 list-disc pl-5">
+                        <li>logMAR charts have the same number of letters on every line and equal steps in size between lines. This makes them more precise and they are standard in eye clinics and research.</li>
+                        <li><strong>0.00 = 6/6.</strong> Higher numbers mean worse vision. Negative numbers mean better than 6/6.</li>
+                        <li>Each line is 0.1, and on a standard 5-letter line <strong>each letter is worth 0.02</strong>.</li>
+                        <li>Scoring: take the smallest line read <em>completely</em> and subtract 0.02 for each extra letter read on smaller lines. For example, all of 0.20 plus 3 letters of 0.10 gives 0.20 − 0.06 = <strong>0.14</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Conversion table -->
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-2 border-b pb-1">Conversion table</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs md:text-sm text-left">
+                            <thead class="bg-slate-100 text-slate-600">
+                                <tr><th class="p-1.5">Snellen (m)</th><th class="p-1.5">Snellen (ft)</th><th class="p-1.5">Decimal</th><th class="p-1.5">logMAR</th></tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 font-mono">
+                                <tr><td class="p-1.5">6/4</td><td class="p-1.5">20/13</td><td class="p-1.5">1.50</td><td class="p-1.5">−0.18</td></tr>
+                                <tr><td class="p-1.5">6/5</td><td class="p-1.5">20/16</td><td class="p-1.5">1.20</td><td class="p-1.5">−0.08</td></tr>
+                                <tr class="bg-green-50 font-bold"><td class="p-1.5">6/6</td><td class="p-1.5">20/20</td><td class="p-1.5">1.00</td><td class="p-1.5">0.00</td></tr>
+                                <tr><td class="p-1.5">6/7.5</td><td class="p-1.5">20/25</td><td class="p-1.5">0.80</td><td class="p-1.5">0.10</td></tr>
+                                <tr><td class="p-1.5">6/9</td><td class="p-1.5">20/30</td><td class="p-1.5">0.67</td><td class="p-1.5">0.18</td></tr>
+                                <tr class="bg-amber-50"><td class="p-1.5">6/12</td><td class="p-1.5">20/40</td><td class="p-1.5">0.50</td><td class="p-1.5">0.30</td></tr>
+                                <tr><td class="p-1.5">6/18</td><td class="p-1.5">20/60</td><td class="p-1.5">0.33</td><td class="p-1.5">0.48</td></tr>
+                                <tr><td class="p-1.5">6/24</td><td class="p-1.5">20/80</td><td class="p-1.5">0.25</td><td class="p-1.5">0.60</td></tr>
+                                <tr><td class="p-1.5">6/36</td><td class="p-1.5">20/120</td><td class="p-1.5">0.17</td><td class="p-1.5">0.78</td></tr>
+                                <tr><td class="p-1.5">6/60</td><td class="p-1.5">20/200</td><td class="p-1.5">0.10</td><td class="p-1.5">1.00</td></tr>
+                                <tr><td class="p-1.5">3/60</td><td class="p-1.5">20/400</td><td class="p-1.5">0.05</td><td class="p-1.5">1.30</td></tr>
+                                <tr><td class="p-1.5">1/60</td><td class="p-1.5">20/1200</td><td class="p-1.5">0.017</td><td class="p-1.5">1.78</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-[11px] text-gray-500 mt-2">logMAR = log<sub>10</sub>(bottom ÷ top). Values are rounded. CF, HM, PL and NPL have no exact Snellen or logMAR equivalent.</p>
+                </div>
+
+                <!-- Converter -->
+                <div class="bg-blue-50/60 p-4 rounded border border-blue-100 no-print">
+                    <h3 class="font-bold text-sm mb-2"><i class="fas fa-right-left text-nhs-blue mr-1"></i> Quick converter</h3>
+                    <div class="flex flex-wrap items-end gap-2 text-sm">
+                        <label class="flex flex-col text-xs text-gray-600">Top (distance)
+                            <input id="cvNum" type="number" min="0.1" step="0.5" value="6" class="w-20 border border-gray-300 rounded px-2 py-1 text-sm text-slate-800">
+                        </label>
+                        <span class="pb-1.5 text-lg font-bold text-gray-400">/</span>
+                        <label class="flex flex-col text-xs text-gray-600">Bottom (line)
+                            <input id="cvDen" type="number" min="0.1" step="0.5" value="18" class="w-20 border border-gray-300 rounded px-2 py-1 text-sm text-slate-800">
+                        </label>
+                        <div id="cvOut" class="ml-1 pb-1 text-sm font-mono" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clinical interpretation -->
+        <h3 class="font-bold text-sm md:text-base mt-8 mb-3">Putting it together: reduced acuity in the ED</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+            <div class="rounded border border-red-200 overflow-hidden">
+                <div class="bg-red-700 text-white px-3 py-2 font-bold text-xs uppercase tracking-wide">Sudden &amp; painless</div>
+                <ul class="p-3 text-xs text-gray-700 space-y-1 list-disc pl-6">
+                    <li>Retinal artery occlusion (time-critical)</li>
+                    <li>Retinal vein occlusion</li>
+                    <li>Retinal detachment (flashes, floaters, curtain)</li>
+                    <li>Vitreous haemorrhage</li>
+                    <li>Ischaemic optic neuropathy, including giant cell arteritis</li>
+                    <li>Stroke or TIA (think visual field loss, often in both eyes)</li>
+                </ul>
+            </div>
+            <div class="rounded border border-red-200 overflow-hidden">
+                <div class="bg-red-700 text-white px-3 py-2 font-bold text-xs uppercase tracking-wide">Sudden &amp; painful / red</div>
+                <ul class="p-3 text-xs text-gray-700 space-y-1 list-disc pl-6">
+                    <li>Acute angle-closure glaucoma</li>
+                    <li>Microbial keratitis (especially contact lens wearers)</li>
+                    <li>Anterior uveitis</li>
+                    <li>Optic neuritis (pain on eye movement)</li>
+                    <li>Endophthalmitis (after recent surgery or injection)</li>
+                    <li>Trauma, chemical injury</li>
+                </ul>
+            </div>
+            <div class="rounded border border-gray-200 overflow-hidden">
+                <div class="bg-slate-700 text-white px-3 py-2 font-bold text-xs uppercase tracking-wide">Gradual</div>
+                <ul class="p-3 text-xs text-gray-700 space-y-1 list-disc pl-6">
+                    <li>Refractive error (improves with pinhole)</li>
+                    <li>Cataract</li>
+                    <li>Age-related macular degeneration</li>
+                    <li>Diabetic eye disease</li>
+                    <li>Chronic glaucoma (usually affects the visual field before acuity)</li>
+                </ul>
+                <p class="px-3 pb-3 text-[11px] text-gray-500">Gradual loss can still be important. Wet macular degeneration, for example, needs prompt referral.</p>
+            </div>
+        </div>
+        <p class="text-[11px] text-gray-500 mt-2">These lists are examples to help your thinking, not a complete differential. Normal acuity does not exclude serious disease: glaucoma, papilloedema and many visual field defects can all occur with 6/6 vision.</p>
+
+        <!-- Reference thresholds -->
+        <div class="mt-6 bg-slate-50 border border-gray-200 rounded p-4">
+            <h3 class="font-bold text-sm mb-2"><i class="fas fa-car text-nhs-blue mr-1"></i> Useful reference point: the DVLA driving standard</h3>
+            <p class="text-xs md:text-sm text-gray-700">For car and motorcycle drivers (Group 1), the DVLA requires acuity of at least <strong>decimal 0.5 (6/12)</strong> using both eyes together (or in the only eye), with glasses or contact lenses if needed. Drivers must also be able to read a number plate at 20 metres and meet a visual field standard. Group 2 (lorry and bus) standards are stricter.</p>
+            <p class="text-[11px] text-gray-500 mt-1">Check the current DVLA guidance before advising a patient: standards can change. If you think a patient may not meet the standard, advise them not to drive and to tell the DVLA, and document that advice.</p>
+        </div>
+    </section>
+
+    <!-- DOCUMENT -->
+    <section id="document" class="p-4 md:p-8 border-b border-gray-200 bg-slate-50">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-4">
+            <i class="fas fa-file-medical text-nhs-blue"></i> Documenting visual acuity
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-2 border-b pb-1">Every acuity entry should say…</h3>
+                    <ul class="text-sm text-gray-700 space-y-1.5">
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>Which eye.</strong> Right and left recorded separately, written as R and L.</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>The result</strong> with partial-line notation (e.g. 6/9 -2), or the low-vision level <strong>with its distance</strong> (e.g. CF @ 50 cm).</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>Correction:</strong> unaided, own glasses, or contact lenses.</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>Pinhole result</strong> if acuity was reduced (a value, or "NI" for no improvement).</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>Chart and distance</strong> if not a standard 6 m Snellen chart (e.g. logMAR, 3 m chart, near card).</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>Timing:</strong> especially if measured after drops, after irrigation, or repeated to look for change.</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-green-600 mt-1 text-xs"></i><span><strong>If it could not be done, say why</strong> (e.g. "VA not obtainable – patient sedated; to be repeated"), and plan to repeat it.</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-2 border-b pb-1">Standard abbreviations</h3>
+                    <dl class="text-sm text-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5">
+                        <div><dt class="inline font-bold">VA</dt> <dd class="inline">Visual acuity</dd></div>
+                        <div><dt class="inline font-bold">R / L</dt> <dd class="inline">Right / left eye</dd></div>
+                        <div><dt class="inline font-bold">c gl / cc</dt> <dd class="inline">With glasses / correction</dd></div>
+                        <div><dt class="inline font-bold">s gl / sc</dt> <dd class="inline">Without glasses (unaided)</dd></div>
+                        <div><dt class="inline font-bold">CL</dt> <dd class="inline">Contact lenses</dd></div>
+                        <div><dt class="inline font-bold">PH</dt> <dd class="inline">Pinhole</dd></div>
+                        <div><dt class="inline font-bold">NI</dt> <dd class="inline">No improvement</dd></div>
+                        <div><dt class="inline font-bold">CF</dt> <dd class="inline">Counting fingers (+ distance)</dd></div>
+                        <div><dt class="inline font-bold">HM</dt> <dd class="inline">Hand movements (+ distance)</dd></div>
+                        <div><dt class="inline font-bold">PL / LP</dt> <dd class="inline">Perception of light</dd></div>
+                        <div><dt class="inline font-bold">NPL / NLP</dt> <dd class="inline">No perception of light</dd></div>
+                        <div><dt class="inline font-bold">N6, N8…</dt> <dd class="inline">Near-vision print size</dd></div>
+                    </dl>
+                    <p class="text-[11px] text-gray-500 mt-2">You may see "OD/OS" (right/left) in letters from abroad. In UK records, write R and L. If you are unsure whether an abbreviation will be understood, write it out in full ("unaided", "own glasses").</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-3 border-b pb-1">Good examples, decoded</h3>
                     <div class="space-y-3 text-sm">
-                        <div class="flex flex-col">
-                            <span class="font-mono font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block w-max mb-1">VA: R 6/6, L 6/9 -1 s gl</span>
-                            <span class="text-gray-600 text-xs">Right eye normal. Left eye reads 6/9 line but made 1 error. Tested without glasses.</span>
+                        <div>
+                            <span class="chip font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block mb-1">VA s gl: R 6/6, L 6/9 -1</span>
+                            <p class="text-gray-600 text-xs">Unaided. Right eye 6/6. Left eye read the 6/9 line but missed one letter.</p>
                         </div>
-                        <div class="flex flex-col">
-                            <span class="font-mono font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block w-max mb-1">VA: R 6/24 PH 6/9 c gl</span>
-                            <span class="text-gray-600 text-xs">Right eye poor acuity with glasses, improved significantly with pinhole. Indicates refractive error.</span>
+                        <div>
+                            <span class="chip font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block mb-1">VA c gl: R 6/24 PH 6/9, L 6/6</span>
+                            <p class="text-gray-600 text-xs">With own glasses. Right eye reduced, with a clear improvement using the pinhole, so a refractive element is likely. Still examine the eye.</p>
                         </div>
-                        <div class="flex flex-col">
-                            <span class="font-mono font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block w-max mb-1">VA: L CF @ 1m</span>
-                            <span class="text-gray-600 text-xs">Left eye severe visual loss. Patient can only count fingers at 1 metre distance.</span>
+                        <div>
+                            <span class="chip font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block mb-1">VA c gl: R 6/6, L CF @ 1 m PH NI</span>
+                            <p class="text-gray-600 text-xs">Left eye can only count fingers at 1 m, with no pinhole improvement, so the cause is not refractive. Ask whether this is new or longstanding.</p>
+                        </div>
+                        <div>
+                            <span class="chip font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block mb-1">VA (logMAR, CL): R 0.00, L 0.14</span>
+                            <p class="text-gray-600 text-xs">logMAR chart, wearing contact lenses. Left eye is equivalent to roughly 6/8.</p>
+                        </div>
+                        <div>
+                            <span class="chip font-bold text-nhs-blue bg-blue-50 px-2 py-1 rounded inline-block mb-1">VA (after 2 L irrigation, 14:20) s gl: R 6/9, L 6/36 PH NI</span>
+                            <p class="text-gray-600 text-xs">Chemical injury. Acuity checked after irrigation, with the timing and context recorded.</p>
                         </div>
                     </div>
                 </div>
 
+                <div class="bg-white p-4 rounded border border-red-200 shadow-sm">
+                    <h3 class="font-bold text-sm mb-3 border-b pb-1 text-red-800">Avoid these</h3>
+                    <ul class="text-sm space-y-2">
+                        <li><span class="chip line-through text-red-700">"Vision normal"</span> / <span class="chip line-through text-red-700">"Vision grossly intact"</span> <span class="text-xs text-gray-600 block">Not measured and cannot be compared later. Record numbers.</span></li>
+                        <li><span class="chip line-through text-red-700">"VA 6/6"</span> <span class="text-xs text-gray-600 block">Which eye? Both? With or without glasses?</span></li>
+                        <li><span class="chip line-through text-red-700">"L CF"</span> <span class="text-xs text-gray-600 block">At what distance? Pinhole? What about the right eye?</span></li>
+                        <li><span class="chip line-through text-red-700">"Can see"</span> / <span class="chip line-through text-red-700">"Able to read clock"</span> <span class="text-xs text-gray-600 block">Not a standard measurement. If no chart is available, use a near card and document it as such.</span></li>
+                        <li><span class="chip line-through text-red-700">"6/6 PH"</span> <span class="text-xs text-gray-600 block">Unclear whether 6/6 was the result before or with the pinhole. Record both, e.g. "6/12 PH 6/6".</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUILDER -->
+    <section id="builder" class="p-4 md:p-8 border-b border-gray-200 no-print">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-1">
+            <i class="fas fa-wand-magic-sparkles text-nhs-blue"></i> Record builder: practise writing it correctly
+        </h2>
+        <p class="text-xs text-gray-600 mb-4">Pick the results and see what a clear entry looks like. This is a teaching aid. Nothing is saved or sent anywhere.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+            <fieldset class="border border-gray-200 rounded p-3">
+                <legend class="px-1 text-xs font-bold text-slate-600 uppercase">Test conditions</legend>
+                <label class="block text-xs text-gray-600 mb-2">Chart
+                    <select id="bChart" class="mt-1 w-full border border-gray-300 rounded px-2 py-1 text-sm text-slate-800">
+                        <option value="">Snellen, 6 m (standard)</option>
+                        <option value="Snellen, 3 m mirror">Snellen, 3 m via mirror</option>
+                        <option value="3 m chart">Snellen, 3 m chart</option>
+                    </select>
+                </label>
+                <label class="block text-xs text-gray-600">Correction worn
+                    <select id="bCorr" class="mt-1 w-full border border-gray-300 rounded px-2 py-1 text-sm text-slate-800">
+                        <option value="s gl">Unaided (s gl)</option>
+                        <option value="c gl">Own distance glasses (c gl)</option>
+                        <option value="CL">Contact lenses (CL)</option>
+                    </select>
+                </label>
+            </fieldset>
+            <fieldset class="border border-gray-200 rounded p-3" data-eye="R">
+                <legend class="px-1 text-xs font-bold text-slate-600 uppercase">Right eye</legend>
+            </fieldset>
+            <fieldset class="border border-gray-200 rounded p-3" data-eye="L">
+                <legend class="px-1 text-xs font-bold text-slate-600 uppercase">Left eye</legend>
+            </fieldset>
+        </div>
+
+        <div class="mt-4 bg-slate-900 text-white rounded p-3 flex flex-col sm:flex-row sm:items-center gap-3">
+            <code id="bOut" class="chip text-sm md:text-base text-green-300 flex-1 break-words" aria-live="polite"></code>
+            <button id="bCopy" type="button" class="shrink-0 bg-nhs-blue hover:bg-nhs-brightblue text-white text-xs font-bold px-3 py-2 rounded"><i class="fas fa-copy mr-1"></i>Copy</button>
+        </div>
+        <ul id="bWarn" class="mt-2 text-xs text-amber-800 space-y-1"></ul>
+    </section>
+
+    <!-- SPECIAL SITUATIONS -->
+    <section id="special" class="p-4 md:p-8 border-b border-gray-200 bg-slate-50">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-4">
+            <i class="fas fa-people-arrows text-nhs-blue"></i> Special situations
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs md:text-sm text-gray-700">
+            <div class="bg-white p-4 rounded border border-gray-200">
+                <h3 class="font-bold text-slate-800 mb-1"><i class="fas fa-child text-nhs-blue mr-1"></i> Children</h3>
+                <p>Use a test suited to the child's age, such as crowded picture or letter-matching tests (e.g. Kay Pictures or Keeler crowded logMAR). In pre-verbal children, check whether they fix on and follow a target, and whether they object when one eye is covered. Expected acuity varies with age. Follow your local paediatric or orthoptic guidance and record the test used.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200">
+                <h3 class="font-bold text-slate-800 mb-1"><i class="fas fa-language text-nhs-blue mr-1"></i> Non-readers or language barriers</h3>
+                <p>Use a tumbling E, Landolt C or picture chart, where the patient points to show the direction or matches a shape. Use a professional interpreter. Record the chart used, e.g. "VA (tumbling E)".</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200">
+                <h3 class="font-bold text-slate-800 mb-1"><i class="fas fa-bed text-nhs-blue mr-1"></i> Patient cannot reach the chart</h3>
+                <p>A near card at the bedside is better than nothing. Record it clearly as near vision (e.g. "N8 at 35 cm"), not as a Snellen value, and repeat distance acuity when possible. Chart apps on phones exist, but check your department's policy before relying on one.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200">
+                <h3 class="font-bold text-slate-800 mb-1"><i class="fas fa-user-injured text-nhs-blue mr-1"></i> Swollen lids / trauma</h3>
+                <p>Gently open the lids without pressing on the globe, especially if a penetrating injury is possible. Even "PL present" is valuable. Record why a fuller assessment was not possible.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200">
+                <h3 class="font-bold text-slate-800 mb-1"><i class="fas fa-procedures text-nhs-blue mr-1"></i> Reduced consciousness</h3>
+                <p>Formal acuity is not possible. Record "VA not obtainable" with the reason. Check and record pupils (including a relative afferent pupillary defect, RAPD, when this can be assessed). Repeat acuity when the patient is able.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200">
+                <h3 class="font-bold text-slate-800 mb-1"><i class="fas fa-glasses text-nhs-blue mr-1"></i> Forgotten glasses</h3>
+                <p>Test unaided, then with a pinhole: the pinhole gives an estimate of corrected acuity. Record it as "s gl … PH …" and note that the patient's glasses were not available.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="p-4 md:p-8 border-b border-gray-200">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-1">
+            <i class="fas fa-graduation-cap text-nhs-blue"></i> Test yourself
+        </h2>
+        <p class="text-xs text-gray-600 mb-4">Think of your answer, then tap to reveal.</p>
+        <div class="space-y-3" id="quizList"></div>
+    </section>
+
+    <!-- GENERAL EXAM -->
+    <section id="exam" class="p-4 md:p-8">
+        <h2 class="text-base md:text-lg font-bold flex items-center gap-2 mb-4">
+            <i class="fas fa-eye text-nhs-blue"></i> After acuity: the rest of the eye assessment
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                <div class="text-nhs-blue mb-2"><i class="fas fa-search text-xl"></i></div>
+                <h3 class="font-bold text-sm mb-1">1. External inspection</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">Examine the orbit, eyelids, conjunctiva and sclera for redness, swelling or discharge. Evert the upper lid to look for a hidden foreign body, unless a penetrating injury is suspected. Look at the anterior chamber for blood (hyphaema) or pus (hypopyon).</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                <div class="text-nhs-blue mb-2"><i class="fas fa-bullseye text-xl"></i></div>
+                <h3 class="font-bold text-sm mb-1">2. Pupils</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">Note size, shape and symmetry. Test the direct and consensual light reflexes. Use the swinging light test to look for a relative afferent pupillary defect (RAPD). With reduced acuity, an RAPD points towards retinal or optic nerve disease.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                <div class="text-nhs-blue mb-2"><i class="fas fa-arrows-alt text-xl"></i></div>
+                <h3 class="font-bold text-sm mb-1">3. Eye movements</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">Ask the patient to follow a target in an "H" pattern. Ask about double vision, and about pain when the eyes move.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                <div class="text-nhs-blue mb-2"><i class="fas fa-border-all text-xl"></i></div>
+                <h3 class="font-bold text-sm mb-1">4. Visual fields</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">Test by confrontation, sitting level with the patient. Test each eye separately, in all four quadrants. Field loss can occur with normal acuity.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                <div class="text-nhs-blue mb-2"><i class="fas fa-tint text-xl"></i></div>
+                <h3 class="font-bold text-sm mb-1">5. Fluorescein</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">Do this <strong>after</strong> acuity. Use cobalt blue light to look for abrasions, dendritic ulcers, or fluid leaking from the eye (Seidel test) in a suspected penetrating injury.</p>
+            </div>
+            <div class="bg-white p-4 rounded border border-gray-200 shadow-sm">
+                <div class="text-nhs-blue mb-2"><i class="fas fa-circle-half-stroke text-xl"></i></div>
+                <h3 class="font-bold text-sm mb-1">6. Fundoscopy / slit lamp</h3>
+                <p class="text-xs text-gray-600 leading-relaxed">Check the red reflex, the optic disc and the retina, and use a slit lamp if you are trained. Dilating drops only after acuity and pupils are recorded, and not without senior or ophthalmology advice in a suspected neurological problem.</p>
             </div>
         </div>
 
-        <div class="p-4 md:p-8">
-            <h2 class="text-base md:text-lg font-bold text-slate-800 flex items-center gap-2 mb-4">
-                <i class="fas fa-eye text-nhs-blue"></i> General Eye Assessment Protocol
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                
-                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-nhs-blue mb-2"><i class="fas fa-search text-xl"></i></div>
-                    <h3 class="font-bold text-slate-800 text-sm mb-1">1. External Inspection</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">Examine the orbit, eyelids, conjunctiva, and sclera. Check for erythema, swelling, or discharge. Evert the upper eyelid to look for hidden foreign bodies. Assess the anterior chamber for hyphaema or hypopyon.</p>
-                </div>
-
-                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-nhs-blue mb-2"><i class="fas fa-bullseye text-xl"></i></div>
-                    <h3 class="font-bold text-slate-800 text-sm mb-1">2. Pupils</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">Note size, shape, and symmetry. Test direct and consensual light reflexes. Perform the swinging flashlight test to check for a Relative Afferent Pupillary Defect.</p>
-                </div>
-
-                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-nhs-blue mb-2"><i class="fas fa-arrows-alt text-xl"></i></div>
-                    <h3 class="font-bold text-slate-800 text-sm mb-1">3. Eye Movements</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">Ask the patient to follow your finger in an 'H' pattern. Test all nine directions of gaze. Ask the patient if they experience double vision or pain during movement.</p>
-                </div>
-
-                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-nhs-blue mb-2"><i class="fas fa-border-all text-xl"></i></div>
-                    <h3 class="font-bold text-slate-800 text-sm mb-1">4. Visual Fields</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">Assess by confrontation. Sit level with the patient. Ask them to cover one eye and look directly at your nose. Test all four quadrants using finger movements.</p>
-                </div>
-
-                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-nhs-blue mb-2"><i class="fas fa-tint text-xl"></i></div>
-                    <h3 class="font-bold text-slate-800 text-sm mb-1">5. Fluorescein Staining</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">Instil fluorescein drops and examine the cornea using a cobalt blue light. Look for abrasions, dendritic ulcers, or fluid leaking from the anterior chamber.</p>
-                </div>
-
-                <div class="bg-white p-4 rounded border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="text-nhs-blue mb-2"><i class="fas fa-exclamation-triangle text-xl"></i></div>
-                    <h3 class="font-bold text-slate-800 text-sm mb-1">6. Red Flags</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">Escalate immediately if you note sudden visual loss, severe pain, chemical exposure, an irregular pupil, or a suspected penetrating globe injury.</p>
-                </div>
-
-            </div>
+        <div class="mt-6 rounded-lg border-2 border-red-300 bg-red-50 p-4">
+            <h3 class="font-bold text-red-800 text-sm md:text-base mb-2"><i class="fas fa-triangle-exclamation mr-1"></i> Red flags: escalate or discuss with ophthalmology urgently, following local pathways</h3>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-xs md:text-sm text-red-900 list-disc pl-5">
+                <li>Sudden loss of vision, painful or painless</li>
+                <li>Chemical injury (irrigate first)</li>
+                <li>Suspected penetrating injury or ruptured globe</li>
+                <li>A new RAPD, or a new irregular or fixed pupil</li>
+                <li>Severe eye pain with headache, vomiting or haloes (possible acute angle closure)</li>
+                <li>Visual symptoms with features of giant cell arteritis</li>
+                <li>Contact lens wearer with a painful red eye</li>
+                <li>Swollen, tense orbit after trauma with reduced vision (possible retrobulbar haemorrhage)</li>
+                <li>New double vision with a painful third nerve palsy</li>
+                <li>Very poor vision (e.g. CF or worse) that is new or unexplained</li>
+            </ul>
         </div>
+    </section>
 
-        <div class="bg-gray-50 p-3 text-center border-t border-gray-200">
-            <p class="text-[10px] text-gray-500 font-medium">Not for clinical record. Guide purpose only. | WMEBEM</p>
-        </div>
+    <footer class="bg-gray-50 p-4 text-center border-t border-gray-200 space-y-1">
+        <p class="text-[11px] text-gray-500 font-medium">Teaching guide only. It does not replace local policies, clinical judgement or senior and ophthalmology advice. Not for use as a clinical record.</p>
+        <p class="text-[11px] text-gray-500">Check the current Royal College of Ophthalmologists, RCEM and DVLA guidance for the latest standards. | WMEBEM</p>
+        <button onclick="window.print()" class="no-print mt-1 text-[11px] font-bold text-nhs-blue hover:underline"><i class="fas fa-print mr-1"></i>Print this guide</button>
+    </footer>
+</div>
 
-    </div>
+<script>
+(function () {
+    // ---------- Converter ----------
+    var num = document.getElementById('cvNum'), den = document.getElementById('cvDen'), out = document.getElementById('cvOut');
+    function convert() {
+        var n = parseFloat(num.value), d = parseFloat(den.value);
+        if (!(n > 0) || !(d > 0)) { out.textContent = 'Enter two positive numbers'; return; }
+        var dec = n / d, lm = Math.log10(d / n);
+        var ft = Math.round(20 / dec);
+        out.innerHTML = '= decimal <strong>' + dec.toFixed(2) + '</strong> · logMAR <strong>' +
+            (lm < 0 ? '−' : '') + Math.abs(lm).toFixed(2) + '</strong> · ≈ 20/' + ft;
+    }
+    num.addEventListener('input', convert); den.addEventListener('input', convert); convert();
 
+    // ---------- Record builder ----------
+    var lines = ['6/4','6/5','6/6','6/7.5','6/9','6/12','6/18','6/24','6/36','6/60','3/60','2/60','1/60','CF','HM','PL','NPL','Not tested'];
+    var phOpts = ['Not done','NI','6/5','6/6','6/7.5','6/9','6/12','6/18','6/24','6/36','6/60'];
+    function sel(cls, opts, def) {
+        return '<select class="' + cls + ' mt-1 w-full border border-gray-300 rounded px-2 py-1 text-sm text-slate-800">' +
+            opts.map(function (o) { return '<option' + (o === def ? ' selected' : '') + '>' + o + '</option>'; }).join('') + '</select>';
+    }
+    document.querySelectorAll('fieldset[data-eye]').forEach(function (fs) {
+        var def = fs.dataset.eye === 'R' ? '6/6' : '6/9';
+        fs.insertAdjacentHTML('beforeend',
+            '<label class="block text-xs text-gray-600 mb-2">Result' + sel('bRes', lines, def) + '</label>' +
+            '<div class="bPart grid grid-cols-2 gap-2 mb-2">' +
+              '<label class="block text-xs text-gray-600">Letters missed (−)<input type="number" min="0" max="9" value="0" class="bMinus mt-1 w-full border border-gray-300 rounded px-2 py-1 text-sm text-slate-800"></label>' +
+              '<label class="block text-xs text-gray-600">Next line (+)<input type="number" min="0" max="9" value="0" class="bPlus mt-1 w-full border border-gray-300 rounded px-2 py-1 text-sm text-slate-800"></label>' +
+            '</div>' +
+            '<label class="bDistWrap hidden text-xs text-gray-600 mb-2">Distance' + sel('bDist', ['1 m','50 cm','30 cm'], '1 m') + '</label>' +
+            '<label class="bPhWrap block text-xs text-gray-600">Pinhole' + sel('bPh', phOpts, 'Not done') + '</label>');
+    });
+    var bOut = document.getElementById('bOut'), bWarn = document.getElementById('bWarn');
+    function eyeText(fs, warns) {
+        var eye = fs.dataset.eye, q = function (s) { return fs.querySelector(s); };
+        var res = q('.bRes').value, minus = parseInt(q('.bMinus').value, 10) || 0, plus = parseInt(q('.bPlus').value, 10) || 0;
+        var isSnellen = res.indexOf('/') > -1, isCountable = res === 'CF' || res === 'HM';
+        q('.bPart').style.display = isSnellen ? '' : 'none';
+        q('.bDistWrap').style.display = isCountable ? 'block' : 'none';
+        q('.bPhWrap').style.display = (res === 'Not tested' || res === 'NPL' || res === 'PL') ? 'none' : 'block';
+        if (res === 'Not tested') { warns.push(eye + ': state the reason acuity was not tested and plan to repeat it.'); return eye + ' not tested (reason: …)'; }
+        var t = eye + ' ' + res;
+        if (isSnellen) {
+            if (minus && plus) warns.push(eye + ': normally use either − or +, not both.');
+            if (minus) t += ' -' + minus;
+            if (plus) t += ' +' + plus;
+        }
+        if (isCountable) t += ' @ ' + q('.bDist').value;
+        var ph = q('.bPh').value;
+        if (q('.bPhWrap').style.display !== 'none') {
+            if (ph !== 'Not done') t += ' PH ' + ph;
+            else if (res !== '6/6' && res !== '6/5' && res !== '6/4') warns.push(eye + ': acuity is worse than 6/6. Consider pinhole testing.');
+        }
+        if (res === 'NPL') warns.push(eye + ': NPL is a very serious finding. Confirm it with a bright light and the other eye firmly covered.');
+        return t;
+    }
+    function build() {
+        var warns = [], chart = document.getElementById('bChart').value, corr = document.getElementById('bCorr').value;
+        var parts = Array.prototype.map.call(document.querySelectorAll('fieldset[data-eye]'), function (fs) { return eyeText(fs, warns); });
+        var head = 'VA' + (chart ? ' (' + chart + ')' : '') + ' ' + corr + ':';
+        bOut.textContent = head + ' ' + parts.join(', ');
+        bWarn.innerHTML = warns.map(function (w) { return '<li><i class="fas fa-lightbulb mr-1"></i>' + w + '</li>'; }).join('');
+    }
+    document.getElementById('builder').addEventListener('input', build);
+    document.getElementById('builder').addEventListener('change', build);
+    document.getElementById('bCopy').addEventListener('click', function () {
+        var btn = this;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(bOut.textContent).then(function () {
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i>Copied';
+                setTimeout(function () { btn.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy'; }, 1500);
+            }).catch(function () {});
+        }
+    });
+    build();
+
+    // ---------- Quiz ----------
+    var quiz = [
+        { q: 'A note reads <span class="chip font-bold">VA: L CF</span>. What is missing?',
+          a: 'Quite a lot: the <strong>distance</strong> for counting fingers (e.g. @ 1 m), the <strong>right eye</strong> result, whether glasses were worn, and a <strong>pinhole</strong> result. Without these, a later clinician cannot tell whether vision has changed.' },
+        { q: 'What does <span class="chip font-bold">6/12 +2</span> mean?',
+          a: 'The patient read the whole 6/12 line (or most of it) and also read <strong>2 letters</strong> of the next smaller line (6/9), but not enough of 6/9 to count as reading that line.' },
+        { q: 'A patient reads <span class="chip font-bold">R 6/36</span> with glasses, improving to <span class="chip font-bold">PH 6/9</span>. Interpretation?',
+          a: 'The large pinhole improvement suggests the reduced acuity is <strong>mostly refractive</strong>. Ask when their glasses were last updated, and about diabetes or cataract symptoms, which can cause a refractive shift. Still complete the eye examination: refractive error and other disease can occur together.' },
+        { q: 'A 72-year-old has sudden painless loss of vision in the right eye for 2 hours: <span class="chip font-bold">R CF @ 1 m PH NI</span>, with a right RAPD. What next?',
+          a: 'No pinhole improvement plus an RAPD points to <strong>retinal or optic nerve disease</strong>, not refractive error. This is time-critical: think retinal artery occlusion and giant cell arteritis. Escalate and contact ophthalmology urgently (and the stroke team, per local pathway). Check ESR/CRP and ask about GCA symptoms.' },
+        { q: 'A patient arrives after an alkali splash to the eye. When do you check acuity?',
+          a: '<strong>Irrigate first.</strong> Do not delay irrigation to check acuity. Once irrigation is under way or complete, measure and document acuity, <strong>noting the time and that it was after irrigation</strong>.' },
+        { q: 'Convert <span class="chip font-bold">6/12</span> to decimal and logMAR.',
+          a: 'Decimal <strong>0.5</strong>, logMAR <strong>0.30</strong>. This is also the DVLA Group 1 (car) acuity threshold, with both eyes together.' },
+        { q: 'A note says <span class="chip font-bold">"Vision grossly normal"</span>. Why is this a problem?',
+          a: 'It is not a measurement. It cannot be compared later, gives no information about each eye separately, and offers little medico-legal protection. Record a number for each eye, with the correction worn.' }
+    ];
+    document.getElementById('quizList').innerHTML = quiz.map(function (item, i) {
+        return '<details class="border border-gray-200 rounded-lg bg-white">' +
+            '<summary class="p-3 flex items-start gap-3 text-sm"><span class="bg-nhs-blue text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0">' + (i + 1) + '</span>' +
+            '<span class="flex-1">' + item.q + '</span><i class="fas fa-chevron-right chev text-gray-400 mt-1 transition-transform"></i></summary>' +
+            '<div class="px-3 pb-3 pl-12 text-sm text-gray-700 border-t border-gray-100 pt-2 bg-blue-50/40">' + item.a + '</div></details>';
+    }).join('');
+})();
+</script>
 </body>
 </html>
