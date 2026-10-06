@@ -1,0 +1,5 @@
+# Browser targets for autoprefixer when building tailwind.bundle.css.
+# Chosen to match the vendor prefixes the Tailwind Play CDN produced.
+defaults
+safari 12
+not op_mini all
